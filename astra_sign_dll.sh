@@ -2,7 +2,7 @@
 
 if [ -z $1 ]; then echo -en "Скрипт для подписи ELF файлов.\nПредварительно необходимо импортировать в систему закрытый ключ.\nUsage: sudo $0 /full/dir/to/spo/ \n"; exit 1; fi
 if [ "$EUID" -ne 0 ]; then  echo -e "\033[5m\033[41m\033[1m   !!!!!    Please run as root   !!!!!   \033[0m ";  exit 1; fi
-key_id=$(gpg -K | grep 43ECAB224425044BB199D81D6996F29E4B306B35 | awk '{print $1}')
+key_id=$(gpg -K | grep 8765AB22442504443439D81D6996F29E4B30123345 | awk '{print $1}')
 pass_file="/home/user/company_password.txt"
 if [ -z $key_id ]; then echo -e "\033[0;31m Закрытый ключ не найден! \nПредварительно необходимо импортировать закрытый ключ компании. \033[0m"; exit 1; else
 mkdir -p /tmp/spo_update
