@@ -68,12 +68,12 @@ echo -e "\033[36m Signed $count files. \033[0m"
 
 # Архив для переноса подписанного СПО с расширенными атрибутами.
 now=$(date +%H%M%S_%d-%m-%Y)
-tar --xattrs --acls -cvzf /tmp/spo_update/spo-signed_$now.tar.gz $dir
+tar --xattrs --numeric-owner --acls -cvzf /tmp/spo_update/spo-signed_$now.tar.gz $dir
 echo -en "\n\033[33;1;44m Для переноса СПО на другую систему без потери расширенных атрибутов используйте следующие команды:\033[0m \n"
 cat <<_EOF_
 
 echo 1 | sudo tee /parsecfs/unsecure_setxattr
-sudo /usr/sbin/execaps -c 0x1000 -- tar --xattrs --xattrs-include=security.'*.*' --acls -xzf spo-signed_$now.tar.gz -C /
+sudo /usr/sbin/execaps -c 0x1000 -- tar --xattrs --numeric-owner --xattrs-include=security.'*.*' --acls -xzf spo-signed_$now.tar.gz -C /
 echo 0 | sudo tee /parsecfs/unsecure_setxattr
 
 _EOF_
