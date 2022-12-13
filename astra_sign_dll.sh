@@ -73,7 +73,7 @@ echo -en "\n\033[33;1;44m Для переноса СПО на другую си�
 cat <<_EOF_
 
 echo 1 | sudo tee /parsecfs/unsecure_setxattr
-sudo /usr/sbin/execaps -c 0x1000 -- tar --xattrs --numeric-owner --xattrs-include=security.'*.*' --acls -xzf spo-signed_$now.tar.gz -C /
+sudo /usr/sbin/execaps -c 0x1000 -- tar --xattrs --numeric-owner --xattrs-include=*.* --acls -xzf spo-signed_$now.tar.gz -C /
 echo 0 | sudo tee /parsecfs/unsecure_setxattr
 
 _EOF_
