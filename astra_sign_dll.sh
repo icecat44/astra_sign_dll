@@ -1,4 +1,5 @@
 #!/bin/bash
+# Представленные в скрипте key_id вымышленные, замените их на свои!
 
 if [ -z $1 ]; then echo -en "Скрипт для подписи ELF файлов.\nПредварительно необходимо импортировать в систему закрытый ключ.\nUsage: sudo $0 /full/dir/to/spo/ \n"; exit 1; fi
 if [ "$EUID" -ne 0 ]; then  echo -e "\033[5m\033[41m\033[1m   !!!!!    Please run as root   !!!!!   \033[0m ";  exit 1; fi
